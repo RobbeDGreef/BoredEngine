@@ -1,0 +1,27 @@
+#! /usr/bin/python3
+
+import sys
+import argparse
+import os
+
+from clifunctions import build, create_project
+
+BE_DESCRIPTION              = "BoredEngine CLI"
+BE_BUILD_HELP               = "Builds a project in a given path"
+BE_CREATE_PROJECT_HELP      = "Creates a project in a folder PROJECTPATH and with name PROJECTNAME"
+
+parser = argparse.ArgumentParser(description=BE_DESCRIPTION)
+parser.add_argument('-b', '--build', help=BE_BUILD_HELP, metavar="BUILDPATH")
+parser.add_argument('-c', '--create-project', nargs=2, help=BE_CREATE_PROJECT_HELP, metavar="PROJECTNAME PROJECTPATH")
+
+args = parser.parse_args()
+
+if len(sys.argv) == 1:
+    print("INVALLID USAGE")
+    parser.print_help()
+
+elif args.build:
+    build(args.build)
+
+elif args.create_project:
+    create_project(args.create_project[0], args.create_project[1])
