@@ -10,6 +10,7 @@ grow.
 ## Creating a game with BoredEngine
 First you will need a project file structure so to create this run the 
 cli python file:
+
 `python3 cli/BoredEngine --create-project <yourprojectnamehere> <yourprojectpathhere>`
 
 Then `cd` into your fresh project and start creating an awesome game!
