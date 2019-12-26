@@ -53,7 +53,7 @@ public:
 public:
     // Engine functions 
     Component(bool);
-    Component(ComponentParent *, bool, bool, bool);
+    Component(ComponentParent *, bool render, bool event, bool parent);
     virtual void onRender() {}
 
     bool isRenderable() { return m_renderAble; }
