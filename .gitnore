@@ -1,0 +1,5 @@
+# should ignore all backup files
+backups/*
+
+# should ignore all object files 
+*.o
