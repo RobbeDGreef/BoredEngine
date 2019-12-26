@@ -15,6 +15,7 @@ cli python file:
 
 Then `cd` into your fresh project and start creating an awesome game!
 If you want to compile your masterpiece just use the CLI again:
+
 `python3 cli/BoredEngine --build <yourprojectpathhere>`
 
 Don't try to build the project yourself (without the CLI) it will most likely
