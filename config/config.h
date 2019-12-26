@@ -13,9 +13,6 @@
 
 #include <core.h>
 
-// Uncomment this to remove debug functionalliy 
-//#define DEBUG_BUILD
-
 #define BE_WINDOW_TITLE     "Window title"
 #define BE_WINDOW_WIDTH     1200
 #define BE_WINDOW_HEIGHT    768
