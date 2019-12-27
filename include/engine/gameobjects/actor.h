@@ -11,7 +11,7 @@
 #ifndef BE_ACTOR_H
 #define BE_ACTOR_H
 
-#include <engine/collision.h>
+#include <engine/gameobjects/collision.h>
 #include <engine/gameobjects/component.h>
 
 #include <fw/texture.h>
