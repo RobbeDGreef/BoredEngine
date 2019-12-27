@@ -27,7 +27,7 @@ void RenderSystem::onRender(ComponentParent *renderList)
             onRender(dynamic_cast<ComponentParent*>(comp));
         }
 
-        if (comp->isRenderable())
+        if (comp->getType() == Component::ComponentType::Renderable)
         {
             m_window->render(dynamic_cast<Sprite*>(comp));
         }
