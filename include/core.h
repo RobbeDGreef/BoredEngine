@@ -14,6 +14,8 @@
 #include <iostream>
 #include <fstream>
 
+#include <cmath>
+
 #include <list>
 #include <string>
 #include <vector>
