@@ -14,13 +14,13 @@
 
 using namespace be;
 
-Component::Component(ComponentParent *parent, bool renderAble, bool receivesEvents, bool isParent)
+Component::Component(ComponentParent *parent, int type, bool receivesEvents, bool isParent)
     : Transformable()
 {
     m_parent = parent;
     m_sceneRoot = false;
 
-    m_renderAble = renderAble;
+    m_type = type;
     m_events = receivesEvents;
     m_isParent = isParent;
     
@@ -33,7 +33,7 @@ Component::Component(bool isParent) : Transformable()
     m_sceneRoot = true;
     m_parent = NULL;
 
-    m_renderAble = true;
+    m_type = Component::ComponentType::Renderable;
     m_events = true;
     m_isParent = isParent;
 }
@@ -92,7 +92,7 @@ ComponentParent::ComponentParent(EventDispatcher *ed): Component(true), EventDis
     
 }
 
-ComponentParent::ComponentParent(ComponentParent *parent, bool render, bool event): Component(parent, render, event, true), EventDispatcher(parent)
+ComponentParent::ComponentParent(ComponentParent *parent, bool render, bool event): Component(parent, Component::ComponentType::Renderable, event, true), EventDispatcher(parent)
 {
 
 }
