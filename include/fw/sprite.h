@@ -34,7 +34,6 @@ private:
 public:
     Sprite(ComponentParent*, Texture2D *);
 
-    //template <typename T>
     Sprite(ComponentParent*, Texture2D *, Rectangle <int>);
     sf::Sprite *getSprite() { return m_sprite; }
     ~Sprite();
