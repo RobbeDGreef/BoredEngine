@@ -11,6 +11,7 @@
 #ifndef BE_LAYER_H
 #define BE_LAYER_H
 
+#include <engine/movesystem.h>
 #include <core.h>
 #include <fw/event.h>
 #include <fw/eventsystem.h>
@@ -28,13 +29,15 @@ public:
 protected:
     std::string m_layerName;
 #endif
+    MoveSystem *m_moveSystem;
 
 public:
 
 #ifdef DEBUG_BUILD
-    Layer(std::string layername, bool isRenderAble);
+    Layer(std::string layername, bool isRenderAble, MoveSystem *);
 #endif
-    Layer(bool isRenderAble);
+    Layer(bool isRenderAble, MoveSystem *);
+    ~Layer();
     
     virtual void onUpdate() {}
     virtual void onAttach() {}

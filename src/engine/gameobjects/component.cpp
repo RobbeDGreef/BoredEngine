@@ -8,9 +8,12 @@
  * @copyright Copyright (c) 2019
  * 
  */
+
+
 #include <engine/gameobjects/component.h>
-#include <core.h>
+#include <engine/movesystem.h>
 #include <fw/eventsystem.h>
+#include <core.h>
 
 using namespace be;
 
@@ -28,14 +31,15 @@ Component::Component(ComponentParent *parent, int type, bool receivesEvents, boo
 
 }
 
-Component::Component(bool isParent) : Transformable()
+Component::Component(MoveSystem *movesys) : Transformable()
 {
     m_sceneRoot = true;
     m_parent = NULL;
+    m_moveSystem = movesys;
 
-    m_type = Component::ComponentType::Renderable;
+    m_type = Component::ComponentType::SceneRoot;
     m_events = true;
-    m_isParent = isParent;
+    m_isParent = false;
 }
 
 void Component::setParent(ComponentParent *parent)
@@ -87,12 +91,12 @@ void ComponentParent::addChild(Component *child, Vector2 <float> location, Rotat
 }
 
 
-ComponentParent::ComponentParent(EventDispatcher *ed): Component(true), EventDispatcher(ed)
+ComponentParent::ComponentParent(MoveSystem *movesys, EventDispatcher *ed): Component(movesys), EventDispatcher(ed)
 {
     
 }
 
-ComponentParent::ComponentParent(ComponentParent *parent, bool render, bool event): Component(parent, Component::ComponentType::Renderable, event, true), EventDispatcher(parent)
+ComponentParent::ComponentParent(ComponentParent *parent, bool render, bool event): Component(parent, Component::ComponentType::Actor, event, true), EventDispatcher(parent)
 {
 
 }

@@ -14,22 +14,34 @@
 
 using namespace be;
 
-Layer::Layer(bool isRenderAble) 
+Layer::Layer(bool isRenderAble, MoveSystem *movesys)
 {
     m_renderAble = isRenderAble;
+    
+    /// @note: If no moveSystem is used, NULL is given as movesys
+    m_moveSystem = movesys;
 
-    root = new ComponentParent(this);
+    root = new ComponentParent(movesys, this);
 
 }
 
 #ifdef DEBUG_BUILD
 
-Layer::Layer(std::string layername, bool isRenderAble)
+Layer::Layer(std::string layername, bool isRenderAble, MoveSystem *movesys)
 {
     m_layerName = layername;
     m_renderAble = isRenderAble;
 
-    root = new ComponentParent(this);
+    /// @note: If no moveSystem is used, NULL is given as movesys
+    m_moveSystem = movesys;
+
+    root = new ComponentParent(movesys, this);
 }
 
 #endif
+
+Layer::~Layer()
+{
+    delete root;
+    delete m_moveSystem;
+}

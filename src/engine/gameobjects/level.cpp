@@ -17,9 +17,9 @@
 using namespace be;
 
 #ifdef DEBUG_BUILD
-Level::Level() : Layer("Level", true)
+Level::Level() : Layer("Level", true, new MoveSystem())
 #else
-Level::Level() : Layer(true)
+Level::Level() : Layer(true, new MoveSystem())
 #endif
 {
 
