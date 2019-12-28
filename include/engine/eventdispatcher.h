@@ -11,8 +11,9 @@
 #ifndef BE_EVENTDISPATCH_H
 #define BE_EVENTDISPATCH_H
 
-#include <core.h>
+#include <fw/event.h>
 #include <engine/gameobjects/component.h>
+#include <core.h>
 
 
 namespace be
