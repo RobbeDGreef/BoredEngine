@@ -8,9 +8,11 @@
  * @copyright Copyright (c) 2019
  * 
  */
-#include <core.h>
+#include <fw/event.h>
+
 #include <engine/gameobjects/component.h>
 #include <engine/eventdispatcher.h>
+#include <core.h>
 
 using namespace be;
 
