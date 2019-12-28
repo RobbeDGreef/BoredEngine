@@ -39,7 +39,7 @@ void Window::render(Sprite *renderTarget)
     sprite->setPosition(renderTarget->getWorldLocation().x, renderTarget->getWorldLocation().y);
     sprite->setRotation(renderTarget->getWorldRotation().rot);
     sprite->setScale(renderTarget->getWorldScale().x, renderTarget->getWorldScale().y); 
-    m_window->draw(*renderTarget->getSprite());
+    m_window->draw(*sprite);
 }
 
 void Window::clear()
