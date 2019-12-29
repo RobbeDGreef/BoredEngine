@@ -44,8 +44,9 @@ void LayerStack::removeLayer(Layer *layer)
     {
         layer->onDetach();
         delete layer;
-        m_layerStack.erase(i);
     }
+    m_layerStack.clear();
+    
 }
 
 void LayerStack::receivedEvent(Event *event)
