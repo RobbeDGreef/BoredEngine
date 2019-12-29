@@ -4,33 +4,36 @@
 
 using namespace be;
 
-bool Actor::move(Vector2 <float> movement)
+// @todo: should only add velocity and not movement
+
+bool Actor::addMovement(Vector2 <float> movement)
 {
+
     if (getParent()->isSceneRoot())
     {
-        getParent()->getMoveParent()->move(this, movement);
+        m_velocity.add(movement);
     }
     
     return false;
 }
 
-bool Actor::move(float amount, Rotator <float> direction)
+bool Actor::addMovement(float amount, Rotator <float> direction)
 {
     if (getParent()->isSceneRoot())
     {
         float x = cos(direction.rot) * amount;
         float y = sin(direction.rot) * amount;
-        getParent()->getMoveParent()->move(this, Vector2 <float> (x,y));
+        m_velocity.add(Vector2<float>(x,y));
     }
     
     return false;
 }
 
-bool Actor::move(float x, float y)
+bool Actor::addMovement(float x, float y)
 {
     if (getParent()->isSceneRoot())
     {
-        getParent()->getMoveParent()->move(this, Vector2 <float> (x,y));
+        m_velocity.add(Vector2<float>(x,y));
     }
     
     return false;
