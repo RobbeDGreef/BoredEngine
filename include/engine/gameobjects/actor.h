@@ -30,7 +30,8 @@ public:
     {
         Dynamic,
         Static,
-        Destructable
+        Destructable,
+        Controller
     };
 
 private:
@@ -58,17 +59,17 @@ public:
     /**
      * @brief addMovement call's will be routed through the Layer parent, or current actor parent, components cant make use of physics. addMovement call's are always relative! 
      */
-    bool addMovement(Vector2 <float> movement);
-    bool addMovement(float amount, Rotator <float> direction);
-    bool addMovement(float x, float y);
+    virtual bool addMovement(Vector2 <float> movement);
+    virtual bool addMovement(float amount, Rotator <float> direction);
+    virtual bool addMovement(float x, float y);
 
     /**
      * @brief If checkCollision is true and the actor tries to teleport somewhere where it can't go because of collision it won't move the actor!
      * 
      * @todo: Create a system in which the teleport call does go through if there is collision but it just places the actor as close as posible to the previously set location without interfering with collision 
      */
-    bool teleport(Vector2 <float> newloc, bool checkCollision=false);
-    bool teleport(float x, float y, bool checkCollision=false);
+    virtual bool teleport(Vector2 <float> newloc, bool checkCollision=false);
+    virtual bool teleport(float x, float y, bool checkCollision=false);
     
     // An actor will never be renderable because it's a class, it can hold sprites that are 
     // renderable but the acter itself WILL NEVER BE RENDNERABLE (that's why we mark it unrenderable here in ComponentParent)
