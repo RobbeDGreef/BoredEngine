@@ -65,7 +65,7 @@ void LayerStack::update()
 {
     for (Layer *layer: m_layerStack)
     {
-        layer->onUpdate();
+        layer->update();
     }
 }
 
