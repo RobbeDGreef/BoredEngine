@@ -11,7 +11,6 @@
 #ifndef BE_COMPONENT_H
 #define BE_COMPONENT_H
 
-#include <engine/movesystem.h>
 #include <engine/transformable.h>
 #include <engine/eventdispatcher.h>
 #include <fw/event.h>
@@ -20,7 +19,6 @@
 namespace be
 {
 
-class MoveSystem;
 class ComponentParent;
 
 class Component : public Transformable
@@ -42,14 +40,13 @@ private:
     ComponentParent *m_parent;
     
     bool m_sceneRoot;
-    MoveSystem *m_moveSystem;
 
 public:
    int gameState;
 
 public:
     // Engine functions 
-    Component(MoveSystem *movesys);
+    Component();
     Component(ComponentParent *, int type, bool event, bool parent);
     virtual void onRender() {}
 
@@ -57,7 +54,6 @@ public:
     void setType(int type) { m_type = type; }
     bool isParent() { return m_isParent; }
     ComponentParent *getParent() { return m_parent; }
-    MoveSystem *getMoveParent(){ return m_moveSystem; }
     bool isSceneRoot() { return m_sceneRoot; }
     bool getsEvents() { return m_events; }
     
@@ -90,7 +86,7 @@ public:
     void addChild(Component *, Vector2 <float> , Rotator <float> , Vector2 <float>);
     
     auto getChildren() { return m_children; }
-    ComponentParent(MoveSystem *movesys, EventDispatcher *ed);
+    ComponentParent(EventDispatcher *ed);
     ComponentParent(ComponentParent *parent, bool render, bool event);
 };
 

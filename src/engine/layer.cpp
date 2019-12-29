@@ -14,28 +14,20 @@
 
 using namespace be;
 
-Layer::Layer(bool isRenderAble, MoveSystem *movesys)
+Layer::Layer(bool isRenderAble)
 {
     m_renderAble = isRenderAble;
-    
-    /// @note: If no moveSystem is used, NULL is given as movesys
-    m_moveSystem = movesys;
-
-    root = new ComponentParent(movesys, this);
-
+    root = new ComponentParent(this);
 }
 
 #ifdef DEBUG_BUILD
 
-Layer::Layer(std::string layername, bool isRenderAble, MoveSystem *movesys)
+Layer::Layer(std::string layername, bool isRenderAble)
 {
     m_layerName = layername;
     m_renderAble = isRenderAble;
 
-    /// @note: If no moveSystem is used, NULL is given as movesys
-    m_moveSystem = movesys;
-
-    root = new ComponentParent(movesys, this);
+    root = new ComponentParent(this);
 }
 
 #endif
@@ -43,5 +35,15 @@ Layer::Layer(std::string layername, bool isRenderAble, MoveSystem *movesys)
 Layer::~Layer()
 {
     delete root;
-    delete m_moveSystem;
+}
+
+void Layer::update()
+{
+    onUpdate();
+    m_timer.reset();
+}
+
+float Layer::getElapsedTime()
+{
+    return m_timer.getElapsedTimeSeconds();
 }

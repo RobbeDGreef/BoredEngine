@@ -7,11 +7,11 @@
 namespace be
 {
 
-class CollisionLayer : public Layer
+class CollisionSystem : public Layer
 {
 
 public:
-    CollisionLayer(ComponentParent *root);
+    CollisionSystem(ComponentParent *root);
     void onUpdate() override;
 
 };
