@@ -1,5 +1,8 @@
 # should ignore all backup files
 backups/*
 
+# and pycache folders
+*/__pycache__
+
 # should ignore all object files 
 *.o
