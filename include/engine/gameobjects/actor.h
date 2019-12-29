@@ -17,6 +17,8 @@
 #include <fw/texture.h>
 #include <fw/eventsystem.h>
 
+#include <core.h>
+
 namespace be
 {
 
@@ -24,16 +26,41 @@ class Actor : public ComponentParent
 {
 
 public:
+    enum ActorTypes
+    {
+        Dynamic,
+        Static,
+        Destructable
+    };
+
+private:
+    Vector2 <float> m_velocity;
+    unsigned int m_actorType; ///< Used for the physics engine to calculate if this object moves etc...
+
+public:
+
+    /// @brief Gets the actor type.
+    unsigned int getActorType() { return m_actorType; }
+
+    /// @brief Gets the actor velocity
+    Vector2 <float> getVelocity() { return m_velocity; }
+
+    /**
+     * @brief The actor collisionfunctions will be called from the collisionsystem
+     * 
+     * @todo: CollisionSystem should call these
+     * 
+     */
     virtual void onActorBeginOverlap(Actor*, Vector2 <float>) {}
     virtual void onActorEndOverlap(Actor*, Vector2 <float>) {}
     virtual void onActorHit(Actor*, Vector2 <float> ) {}
     
     /**
-     * @brief Move call's will be routed through the Layer parent, or current actor parent, components cant make use of physics. Move call's are always relative! 
+     * @brief addMovement call's will be routed through the Layer parent, or current actor parent, components cant make use of physics. addMovement call's are always relative! 
      */
-    bool move(Vector2 <float> movement);
-    bool move(float amount, Rotator <float> direction);
-    bool move(float x, float y);
+    bool addMovement(Vector2 <float> movement);
+    bool addMovement(float amount, Rotator <float> direction);
+    bool addMovement(float x, float y);
 
     /**
      * @brief If checkCollision is true and the actor tries to teleport somewhere where it can't go because of collision it won't move the actor!
@@ -45,7 +72,7 @@ public:
     
     // An actor will never be renderable because it's a class, it can hold sprites that are 
     // renderable but the acter itself WILL NEVER BE RENDNERABLE (that's why we mark it unrenderable here in ComponentParent)
-    Actor(ComponentParent *parent, bool event) : ComponentParent(parent, false, event) {}
+    Actor(ComponentParent *parent, unsigned int actorType, bool event) : ComponentParent(parent, false, event) { m_actorType = actorType; }
 };
 
 }
