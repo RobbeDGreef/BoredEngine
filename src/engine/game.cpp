@@ -12,6 +12,8 @@
 #include <fw/thread.h>
 #include <engine/game.h>
 #include <engine/gameobjects/level.h>
+#include <engine/physicssystem.h>
+#include <engine/collisionsystem.h>
 #include <startconfig.h>
 #include <config.h>
 
@@ -30,8 +32,11 @@ Game::Game()
     m_eventSystem = new EventSystem(m_window);
     m_renderSystem = new RenderSystem(m_window);
 
-    m_layerStack->pushLayer(new STARTLEVEL());
-
+    auto level = new STARTLEVEL();
+    m_layerStack->pushLayer(new PhysicsSystem(level->root));
+    m_layerStack->pushLayer(new CollisionSystem(level->root));
+    m_layerStack->pushLayer(level);
+    
 }
 
 Game::~Game()
