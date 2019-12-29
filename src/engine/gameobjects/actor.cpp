@@ -38,3 +38,29 @@ bool Actor::addMovement(float x, float y)
     
     return false;
 }
+
+bool Actor::teleport(Vector2 <float> newloc, bool checkCollision)
+{
+    if (checkCollision)
+    {
+        // @todo: Implement checkCollision when teleporting
+        std::cout << "Teleport with collision feature not implmeneted yet\n";
+    }
+    else
+    {
+        setLocation(newloc);
+    }
+}
+
+bool Actor::teleport(float x, float y, bool checkCollision)
+{
+        if (checkCollision)
+    {
+        // @todo: Implement checkCollision when teleporting
+        std::cout << "Teleport with collision feature not implmeneted yet\n";
+    }
+    else
+    {
+        setLocation(Vector2 <float> (x,y));
+    }
+}
