@@ -4,7 +4,7 @@
 
 using namespace be;
 
-CollisionLayer::CollisionLayer(ComponentParent *_root): Layer(false, NULL)
+CollisionSystem::CollisionSystem(ComponentParent *_root): Layer(false)
 {
     root = _root;
 }
@@ -25,7 +25,7 @@ void checkCollisions(ComponentParent *components)
     }
 }
 
-void CollisionLayer::onUpdate()
+void CollisionSystem::onUpdate()
 {
     checkCollisions(root);
 }
