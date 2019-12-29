@@ -8,6 +8,20 @@ using namespace be;
 /// @todo: this should be level dependand!
 #define GRAVITY 9.81f
 
+void addGravity(Actor *actor, float dt)
+{
+    actor->addMovement(Vector2<float>(0, GRAVITY*dt));
+}
+
+void calcPos(Actor *actor, float dt)
+{
+    auto curloc = actor->getLocation();
+    auto vel = actor->getVelocity();
+    curloc.add(Vector2<float>(vel.x*dt, vel.y*dt));
+    actor->setLocation(curloc);
+
+}
+
 void PhysicsSystem::onUpdate()
 {
     float dt = getElapsedTime();
@@ -20,7 +34,8 @@ void PhysicsSystem::onUpdate()
             auto actor = dynamic_cast<Actor*>(comp);
             if (actor->getActorType() == Actor::ActorTypes::Dynamic)
             {
-                actor->addMovement(Vector2<float>(0, GRAVITY*dt));
+                addGravity(actor, dt);
+                calcPos(actor, dt);
             }
         }
     }
