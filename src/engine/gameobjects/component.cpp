@@ -11,7 +11,6 @@
 
 
 #include <engine/gameobjects/component.h>
-#include <engine/movesystem.h>
 #include <fw/eventsystem.h>
 #include <core.h>
 
@@ -31,11 +30,10 @@ Component::Component(ComponentParent *parent, int type, bool receivesEvents, boo
 
 }
 
-Component::Component(MoveSystem *movesys) : Transformable()
+Component::Component() : Transformable()
 {
     m_sceneRoot = true;
     m_parent = NULL;
-    m_moveSystem = movesys;
 
     m_type = Component::ComponentType::SceneRoot;
     m_events = true;
@@ -91,7 +89,7 @@ void ComponentParent::addChild(Component *child, Vector2 <float> location, Rotat
 }
 
 
-ComponentParent::ComponentParent(MoveSystem *movesys, EventDispatcher *ed): Component(movesys), EventDispatcher(ed)
+ComponentParent::ComponentParent(EventDispatcher *ed): Component(), EventDispatcher(ed)
 {
     
 }
