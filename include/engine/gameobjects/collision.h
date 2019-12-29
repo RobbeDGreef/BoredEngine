@@ -1,3 +1,13 @@
+/**
+ * @file collision.h
+ * @author Robbe De Greef (robbedegreef@gmail.com)
+ * @brief Implements the collisionbounds class.
+ * @version 0.1
+ * @date 2019-12-29
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #ifndef BE_COLLISION_H
 #define BE_COLLISION_H
 
