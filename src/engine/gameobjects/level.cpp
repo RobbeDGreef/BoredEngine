@@ -10,6 +10,7 @@
  */
 #include <engine/gameobjects/level.h>
 #include <engine/layer.h>
+#include <engine/gamecontext.h>
 #include <core.h>
 
 #include <fw/eventsystem.h>
@@ -17,12 +18,13 @@
 using namespace be;
 
 #ifdef DEBUG_BUILD
-Level::Level() : Layer("Level", true)
+Level::Level(GameContext *gcontext) : Layer("Level", true, new ComponentParent(gcontext, this))
 #else
-Level::Level() : Layer(true)
+Level::Level(GameContext *gcontext) : Layer(true, new ComponentParent(gcontext, this))
 #endif
 {
-
+    gameContext = gcontext;
+    
 }
 
 Level::~Level()

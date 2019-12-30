@@ -30,9 +30,10 @@ Component::Component(ComponentParent *parent, int type, bool receivesEvents, boo
 
 }
 
-Component::Component() : Transformable()
+Component::Component(GameContext *gcontext) : Transformable()
 {
     m_sceneRoot = true;
+    m_gameContext = gcontext;
     m_parent = NULL;
 
     m_type = Component::ComponentType::SceneRoot;
@@ -43,6 +44,14 @@ Component::Component() : Transformable()
 void Component::setParent(ComponentParent *parent)
 {
     m_parent = parent;
+}
+
+GameContext *Component::getGameContext()
+{
+    if (m_sceneRoot)
+        return m_gameContext;
+    else
+        return m_parent->getGameContext();
 }
 
 Vector2 <float> Component::getWorldLocation() 
@@ -89,7 +98,7 @@ void ComponentParent::addChild(Component *child, Vector2 <float> location, Rotat
 }
 
 
-ComponentParent::ComponentParent(EventDispatcher *ed): Component(), EventDispatcher(ed)
+ComponentParent::ComponentParent(GameContext *gcontext, EventDispatcher *ed): Component(gcontext), EventDispatcher(ed)
 {
     
 }

@@ -13,6 +13,7 @@
 
 #include <core.h>
 #include <engine/layer.h>
+#include <engine/gamecontext.h>
 #include <engine/gameobjects/actor.h>
 #include <engine/gameobjects/component.h>
 #include <engine/gameobjects/background.h>
@@ -25,12 +26,13 @@ class Level: public Layer
 protected:
     bool WorldCollisionsEnabled;
     float WorldGravity;
+    GameContext *gameContext;
 
     Background *WorldBackground = NULL;
 
 public:
     void spawn(Vector2 <float> , Rotator <float> , Vector2 <float>, Actor*);
-    Level();
+    Level(GameContext *);
     ~Level();
     void setBackground(Texture2D *text) { WorldBackground = new Background(root, text); }
 };

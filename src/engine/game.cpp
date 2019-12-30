@@ -31,13 +31,13 @@ Game::Game()
     m_layerStack = new LayerStack();
     m_eventSystem = new EventSystem(m_window);
     m_renderSystem = new RenderSystem(m_window);
+    m_gameContext = new GAMECONTEXT();
 
     // Collision system has to be pushed last because it needs to be executed last too, it will stop the velocity set by the previous layers
-    auto level = new STARTLEVEL();
-    m_layerStack->pushLayer(new PhysicsSystem(level->root));
-    m_layerStack->pushLayer(level);
-    m_layerStack->pushLayer(new CollisionSystem(level->root));
-    
+    m_layerStack->pushLayer(new PhysicsSystem(m_gameContext->getLevel()->root));
+    m_layerStack->pushLayer(m_gameContext->getLevel());
+    m_layerStack->pushLayer(new CollisionSystem(m_gameContext->getLevel()->root));
+
 }
 
 Game::~Game()
