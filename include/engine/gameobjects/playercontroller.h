@@ -1,9 +1,20 @@
+/**
+ * @file playercontroller.h
+ * @author Robbe De Greef (robbedegreef@gmail.com)
+ * @brief Implements the playercontroller class
+ * @version 0.1
+ * @date 2019-12-30
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #ifndef BE_PLAYERCONTROLLER_H
 #define BE_PLAYERCONTROLLER_H
 
 
 #include <engine/gameobjects/actor.h>
 #include <engine/gameobjects/component.h>
+#include <engine/gameobjects/camera.h>
 
 namespace be
 {
@@ -19,11 +30,17 @@ class PlayerController: public Actor
 
 protected:
     Actor *PossedActor;
+    be::Camera *ActiveCamera;
+    std::string playerName = "Player";
 
 public:
     PlayerController(ComponentParent *parent);
     PlayerController(ComponentParent *parent, Actor *toPossesActor);
     void possess(Actor *);
+    // @fixme: why do we need to put be:: before the camera reference??
+    void setActiveCamera(be::Camera*);
+
+    std::string getName() { return playerName; }
 
     /**
      * @brief See actor documentation

@@ -1,6 +1,17 @@
+/**
+ * @file playercontroller.cpp
+ * @author Robbe De Greef (robbedegreef@gmail.com)
+ * @brief Implments the playercontroller class's functions
+ * @version 0.1
+ * @date 2019-12-30
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #include <engine/gameobjects/playercontroller.h>
 #include <engine/gameobjects/actor.h>
 #include <engine/gameobjects/component.h>
+#include <engine/gameobjects/camera.h>
 
 using namespace be;
 
@@ -17,6 +28,11 @@ PlayerController::PlayerController(ComponentParent *parent): Actor(parent, Actor
 PlayerController::PlayerController(ComponentParent *parent, Actor *toPosses): Actor(parent, Actor::ActorTypes::Controller, true)
 {
     possess(toPosses);
+}
+
+void PlayerController::setActiveCamera(be::Camera *camera)
+{
+    ActiveCamera = camera;
 }
 
 bool PlayerController::addMovement(Vector2 <float> movement)
