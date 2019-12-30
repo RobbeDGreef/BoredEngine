@@ -13,6 +13,7 @@
 
 #include <engine/transformable.h>
 #include <engine/eventdispatcher.h>
+#include <engine/gamecontext.h>
 #include <fw/event.h>
 #include <core.h>
 
@@ -30,7 +31,8 @@ public:
         Collision,
         Renderable,
         SceneRoot,
-        Actor
+        Actor,
+        Camera
     };
 
 private:
@@ -40,13 +42,14 @@ private:
     ComponentParent *m_parent;
     
     bool m_sceneRoot;
+    GameContext *m_gameContext;
 
 public:
    int gameState;
 
 public:
     // Engine functions 
-    Component();
+    Component(GameContext *);
     Component(ComponentParent *, int type, bool event, bool parent);
     virtual void onRender() {}
 
@@ -62,6 +65,7 @@ public:
 
     // The set parent function will be called once the child is added to the parent
     void setParent(ComponentParent *parent);
+    GameContext *getGameContext();
 
     virtual void keyPressEvent(Event *) {}
     virtual void keyReleaseEvent(Event *) {}
@@ -86,7 +90,7 @@ public:
     void addChild(Component *, Vector2 <float> , Rotator <float> , Vector2 <float>);
     
     auto getChildren() { return m_children; }
-    ComponentParent(EventDispatcher *ed);
+    ComponentParent(GameContext *, EventDispatcher *ed);
     ComponentParent(ComponentParent *parent, bool render, bool event);
 };
 

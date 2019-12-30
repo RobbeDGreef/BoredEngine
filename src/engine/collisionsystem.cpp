@@ -4,9 +4,8 @@
 
 using namespace be;
 
-CollisionSystem::CollisionSystem(ComponentParent *_root): Layer(false)
+CollisionSystem::CollisionSystem(ComponentParent *_root): Layer(false, _root)
 {
-    root = _root;
 }
 
 void checkCollisions(ComponentParent *components)

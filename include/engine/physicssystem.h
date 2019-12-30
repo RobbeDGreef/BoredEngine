@@ -10,7 +10,7 @@ class PhysicsSystem: public Layer
 {
 
 public:
-    PhysicsSystem(ComponentParent *_root): Layer(false) { root=_root; } 
+    PhysicsSystem(ComponentParent *_root): Layer(false, _root) { } 
     void onUpdate() override;
 
 };
