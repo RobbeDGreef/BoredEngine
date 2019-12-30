@@ -14,20 +14,20 @@
 
 using namespace be;
 
-Layer::Layer(bool isRenderAble)
+Layer::Layer(bool isRenderAble, ComponentParent *_root)
 {
     m_renderAble = isRenderAble;
-    root = new ComponentParent(this);
+    root = _root;
 }
 
 #ifdef DEBUG_BUILD
 
-Layer::Layer(std::string layername, bool isRenderAble)
+Layer::Layer(std::string layername, bool isRenderAble, ComponentParent *_root)
 {
     m_layerName = layername;
     m_renderAble = isRenderAble;
-
-    root = new ComponentParent(this);
+    
+    root = _root;
 }
 
 #endif

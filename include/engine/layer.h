@@ -37,9 +37,9 @@ protected:
 public:
 
 #ifdef DEBUG_BUILD
-    Layer(std::string layername, bool isRenderAble);
+    Layer(std::string layername, bool isRenderAble, ComponentParent *);
 #endif
-    Layer(bool isRenderAble);
+    Layer(bool isRenderAble, ComponentParent *);
     ~Layer();
     
     /// @brief this function will be called by layerstack and this function will update the timer and call the onUpdate function
