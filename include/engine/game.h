@@ -17,11 +17,9 @@
 
 #include <engine/layerstack.h>
 #include <engine/rendersystem.h>
+#include <engine/gamecontext.h>
 
 #include <core.h>
-
-// @todo: remove lvl entry point
-#include <engine/gameobjects/level.h>
 
 namespace be
 {
@@ -34,6 +32,7 @@ private:
     LayerStack *m_layerStack;
     EventSystem *m_eventSystem;
     RenderSystem *m_renderSystem;
+    GameContext *m_gameContext;
 
     bool m_running = true;
     bool m_minimized = false;
