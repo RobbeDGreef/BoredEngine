@@ -17,7 +17,7 @@
 #include <fw/texture.h>
 #include <fw/eventsystem.h>
 
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {
@@ -45,6 +45,7 @@ public:
 
     /// @brief Gets the actor velocity
     Vector2 <float> getVelocity() { return m_velocity; }
+    void setVelocity(Vector2 <float> vel) { m_velocity = vel; }
 
     /**
      * @brief The actor collisionfunctions will be called from the collisionsystem
