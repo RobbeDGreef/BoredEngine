@@ -1,7 +1,7 @@
 #include <engine/physicssystem.h>
 #include <engine/gameobjects/actor.h>
 #include <engine/gameobjects/collision.h>
-#include <core.h>
+#include <engine.h>
 
 using namespace be;
 
@@ -17,7 +17,7 @@ void calcPos(Actor *actor, float dt)
 {
     auto curloc = actor->getLocation();
     auto vel = actor->getVelocity();
-    curloc.add(Vector2<float>(vel.x*dt, vel.y*dt));
+    curloc += Vector2<float>(vel.x*dt, vel.y*dt);
     actor->setLocation(curloc);
 
 }

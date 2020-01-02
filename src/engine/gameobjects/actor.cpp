@@ -1,6 +1,6 @@
 #include <engine/gameobjects/actor.h>
 #include <engine/layer.h>
-#include <core.h>
+#include <engine.h>
 
 using namespace be;
 
@@ -8,10 +8,9 @@ using namespace be;
 
 bool Actor::addMovement(Vector2 <float> movement)
 {
-
     if (getParent()->isSceneRoot())
     {
-        m_velocity.add(movement);
+        m_velocity += movement;
     }
     
     return false;
@@ -23,7 +22,7 @@ bool Actor::addMovement(float amount, Rotator <float> direction)
     {
         float x = cos(direction.rot) * amount;
         float y = sin(direction.rot) * amount;
-        m_velocity.add(Vector2<float>(x,y));
+        m_velocity += Vector2<float>(x,y);
     }
     
     return false;
@@ -33,7 +32,7 @@ bool Actor::addMovement(float x, float y)
 {
     if (getParent()->isSceneRoot())
     {
-        m_velocity.add(Vector2<float>(x,y));
+        m_velocity += Vector2<float>(x,y);
     }
     
     return false;
