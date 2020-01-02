@@ -28,10 +28,10 @@ using namespace be;
 Game::Game()
 {
     m_window = new Window(BE_WINDOW_TITLE, BE_WINDOW_WIDTH, BE_WINDOW_HEIGHT);
+    m_gameContext = new GAMECONTEXT();
     m_layerStack = new LayerStack();
     m_eventSystem = new EventSystem(m_window);
-    m_renderSystem = new RenderSystem(m_window);
-    m_gameContext = new GAMECONTEXT();
+    m_renderSystem = new RenderSystem(m_window, m_gameContext);
 
     // Collision system has to be pushed last because it needs to be executed last too, it will stop the velocity set by the previous layers
     m_layerStack->pushLayer(new PhysicsSystem(m_gameContext->getLevel()->root));
