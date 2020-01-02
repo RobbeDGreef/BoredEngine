@@ -12,7 +12,7 @@
 #define BE_TEXTURE_H
 
 #include <SFML/Graphics.hpp>
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

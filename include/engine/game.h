@@ -19,7 +19,7 @@
 #include <engine/rendersystem.h>
 #include <engine/gamecontext.h>
 
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

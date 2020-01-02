@@ -12,7 +12,7 @@
 
 #include <engine/gameobjects/component.h>
 #include <fw/eventsystem.h>
-#include <core.h>
+#include <engine.h>
 
 using namespace be;
 
@@ -59,7 +59,7 @@ Vector2 <float> Component::getWorldLocation()
     Vector2 <float> ret(m_location);
     if (m_parent)
     {
-        ret.add(m_parent->getLocation());
+        ret += m_parent->getLocation();
     }
     return ret;
 }
@@ -80,7 +80,7 @@ Vector2 <float> Component::getWorldScale()
     
     if (m_parent)
     {
-        ret.multiply(m_parent->getScale());
+        ret *= m_parent->getScale();
     }
     return ret;
 }

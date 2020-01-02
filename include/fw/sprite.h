@@ -11,7 +11,7 @@
 #ifndef BE_SPRITE_H
 #define BE_SPRITE_H
 
-#include <core.h>
+#include <engine.h>
 #include <SFML/Graphics.hpp>
 #include <fw/texture.h>
 #include <fw/rectangle.h>

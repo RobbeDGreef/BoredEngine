@@ -12,7 +12,7 @@
 
 #include <engine/gameobjects/component.h>
 #include <engine/eventdispatcher.h>
-#include <core.h>
+#include <engine.h>
 
 using namespace be;
 

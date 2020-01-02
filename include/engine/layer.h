@@ -11,7 +11,7 @@
 #ifndef BE_LAYER_H
 #define BE_LAYER_H
 
-#include <core.h>
+#include <engine.h>
 #include <fw/event.h>
 #include <fw/eventsystem.h>
 #include <fw/timer.h>

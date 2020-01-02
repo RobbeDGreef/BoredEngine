@@ -15,7 +15,7 @@
 #include <engine/eventdispatcher.h>
 #include <engine/gamecontext.h>
 #include <fw/event.h>
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

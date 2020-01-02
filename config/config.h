@@ -11,7 +11,7 @@
 #ifndef BE_GAME_CONFIG
 #define BE_GAME_CONFIG
 
-#include <core.h>
+#include <engine.h>
 
 #define BE_WINDOW_TITLE     "Window title"
 #define BE_WINDOW_WIDTH     1200

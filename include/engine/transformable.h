@@ -11,7 +11,7 @@
 #ifndef BE_TRANSFORMABLE_H
 #define BE_TRANSFORMABLE_H
 
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

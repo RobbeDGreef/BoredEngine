@@ -1,6 +1,6 @@
 #include <engine/gameobjects/collision.h>
 #include <engine/gameobjects/component.h>
-#include <core.h>
+#include <engine.h>
 
 using namespace be;
 

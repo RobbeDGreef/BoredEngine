@@ -1,15 +1,15 @@
 /**
- * @file core.h
+ * @file engine.h
  * @author Robbe De Greef (robbedegreef@gmail.com)
  * @brief The main core header file, holds all the default engine types aswell as some standard library headers
- * @version 0.1
+ * @version 0.2
  * @date 2019-12-26
  * 
  * @copyright Copyright (c) 2019
  * 
  */
-#ifndef BE_CORE_H
-#define BE_CORE_H
+#ifndef BE_ENGINE_H
+#define BE_ENGINE_H
 
 #include <iostream>
 #include <fstream>
@@ -24,11 +24,12 @@
 
 #define GETBIT(x) (1 << x)
 
+namespace be
+{
+
 /**
  * Default engine types
  */
-
-
 template <typename vecT>
 class Vector2
 {
@@ -41,8 +42,23 @@ public:
     Vector2(vecT _x, vecT _y) { x=_x; y=_y; }
     Vector2(const Vector2 <vecT> &old) { x=old.x; y=old.y; } 
     
-    void add(Vector2 <vecT> amount) { x+=amount.x; y+=amount.y; }
-    void multiply(Vector2 <vecT> amount) { x*=amount.x; y*=amount.y; }
+    Vector2<vecT> operator+(const Vector2<vecT>&); 
+    Vector2<vecT> operator*(const Vector2<vecT>&);
+
+    Vector2<vecT>& operator+=(const Vector2<vecT> a)
+    {
+        x += a.x;
+        y += a.y;
+        return *this;
+    }
+
+    Vector2<vecT>& operator*=(const Vector2<vecT> a)
+    {
+        x *= a.x;
+        y *= a.y;
+        return *this;
+    }
+
 };
 
 template <typename vecT>
@@ -57,8 +73,23 @@ public:
     Vector3(const Vector3 <vecT> &old) { x=old.x; y=old.y; z=old.z; }
     Vector3(vecT _x, vecT _y, vecT _z) { x=_x; y=_y; z=_z; }
 
-    void add(Vector3 <vecT> amount) { x+=amount.x; y+=amount.y; z+=amount.z; }
-    void multiply(Vector3 <vecT> amount) { x*=amount.x; y*=amount.y; z*=amount.z; }
+    Vector3<vecT> operator+(const Vector3<vecT>&); 
+    Vector3<vecT> operator*(const Vector3<vecT>&);
+
+    Vector3<vecT>& operator+=(const Vector3<vecT> a)
+    {
+        x += a.x;
+        y += a.y;
+        return *this;
+    }
+
+    Vector3<vecT>& operator*=(const Vector3<vecT> a)
+    {
+        x *= a.x;
+        y *= a.y;
+        return *this;
+    }
+
 };
 
 template <typename rotT>
@@ -72,4 +103,6 @@ public:
     Rotator <rotT> (rotT rot) { rot=rot; }
 };
 
-#endif // BE_CORE_H
+} // namespace be
+
+#endif // BE_ENGINE_H

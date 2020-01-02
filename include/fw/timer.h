@@ -12,7 +12,7 @@
 #define BE_TIMER_H
 
 #include <SFML/System.hpp>
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

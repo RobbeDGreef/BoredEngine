@@ -13,7 +13,7 @@
 
 #include <engine/layer.h>
 #include <engine/rendersystem.h>
-#include <core.h>
+#include <engine.h>
 
 namespace be
 {

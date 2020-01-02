@@ -13,7 +13,7 @@
 
 #include <fw/event.h>
 #include <engine/gameobjects/component.h>
-#include <core.h>
+#include <engine.h>
 
 
 namespace be

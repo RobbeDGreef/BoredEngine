@@ -11,7 +11,7 @@
 #include <engine/gameobjects/level.h>
 #include <engine/layer.h>
 #include <engine/gamecontext.h>
-#include <core.h>
+#include <engine.h>
 
 #include <fw/eventsystem.h>
 

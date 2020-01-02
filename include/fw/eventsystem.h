@@ -13,7 +13,7 @@
 
 #include <fw/window.h>
 
-#include <core.h>
+#include <engine.h>
 #include <fw/event.h>
 
 //#include <engine/component.h>

@@ -14,7 +14,7 @@
 #include <fw/event.h>
 #include <fw/window.h>
 
-#include <core.h>
+#include <engine.h>
 
 
 using namespace be;
