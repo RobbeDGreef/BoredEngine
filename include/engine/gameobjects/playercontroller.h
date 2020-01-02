@@ -37,9 +37,10 @@ public:
     PlayerController(ComponentParent *parent);
     PlayerController(ComponentParent *parent, Actor *toPossesActor);
     void possess(Actor *);
+
     // @fixme: why do we need to put be:: before the camera reference??
     void setActiveCamera(be::Camera*);
-
+    be::Camera *getActiveCamera();
     std::string getName() { return playerName; }
 
     /**
