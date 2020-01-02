@@ -33,12 +33,13 @@ sf::Window *Window::getWindow()
 }
 
 
-void Window::render(Sprite *renderTarget)
+void Window::render(Sprite *renderTarget, unsigned int x, unsigned int y, float zoomx, float zoomy)
 {
+    // @todo: / @fixme: The rotation and scale should just be set whenever the scale/rot of any of the parents changes and not every frame, the overheid is just crazy
     sf::Sprite *sprite = renderTarget->getSprite();
-    sprite->setPosition(renderTarget->getWorldLocation().x, renderTarget->getWorldLocation().y);
+    sprite->setPosition(x, y);
     sprite->setRotation(renderTarget->getWorldRotation().rot);
-    sprite->setScale(renderTarget->getWorldScale().x, renderTarget->getWorldScale().y); 
+    sprite->setScale(zoomx, zoomy);
     m_window->draw(*sprite);
 }
 

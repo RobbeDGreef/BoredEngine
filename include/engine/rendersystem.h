@@ -12,10 +12,14 @@
 #define BE_RENDERSYS_h
 
 #include <fw/window.h>
+#include <engine/gamecontext.h>
 #include <engine/gameobjects/component.h>
+
 
 namespace be
 {
+
+#define PIXEL_TO_METER_RATIO    15 ///< 15 pixels per meter (on no zoom 20 m camera distance)
 
 /**
  * maybe render calls should be sent to the window class, altough that would make rendercanvases impossible ? or maybe not if i emmulate them
@@ -27,9 +31,10 @@ class RenderSystem
 private: 
     // @todo: Create a camera system (might put it in window class but it needs to be able to change and created by the user)
     Window *m_window;
+    GameContext *m_gameContext;
 
 public:
-    RenderSystem(Window *);
+    RenderSystem(Window *, GameContext *);
 
     // recursive render function over componentparents ?
     void onRender(ComponentParent *);

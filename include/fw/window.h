@@ -12,7 +12,7 @@
 #define BE_WINDOW_H
 
 #include <SFML/Graphics.hpp>
-#include <core.h>
+#include <engine.h>
 
 #include <fw/sprite.h>
 
@@ -33,7 +33,7 @@ public:
 
 public:
     Window(std::string title, unsigned int width, unsigned int height);
-    void render(Sprite*);
+    void render(Sprite*, unsigned int, unsigned int, float, float);
 
     void clear();
     void clear(Vector3 <unsigned char>);

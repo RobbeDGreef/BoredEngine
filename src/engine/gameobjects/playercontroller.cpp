@@ -35,6 +35,11 @@ void PlayerController::setActiveCamera(be::Camera *camera)
     ActiveCamera = camera;
 }
 
+be::Camera *PlayerController::getActiveCamera()
+{
+    return ActiveCamera;
+}
+
 bool PlayerController::addMovement(Vector2 <float> movement)
 {
     return PossedActor->addMovement(movement);

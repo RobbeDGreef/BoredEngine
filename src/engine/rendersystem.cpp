@@ -10,6 +10,8 @@
  */
 #include <engine/rendersystem.h>
 #include <engine/gameobjects/component.h>
+#include <engine/gameobjects/camera.h>
+#include <engine/gameobjects/playercontroller.h>
 
 using namespace be;
 
@@ -20,6 +22,8 @@ using namespace be;
  */
 void RenderSystem::onRender(ComponentParent *renderList)
 {
+    Camera *camera = m_gameContext->getPlayerController()->getActiveCamera();
+
     for (Component *comp : renderList->getChildren())
     {
         if (comp->isParent())
@@ -29,7 +33,13 @@ void RenderSystem::onRender(ComponentParent *renderList)
 
         if (comp->getType() == Component::ComponentType::Renderable)
         {
-            m_window->render(dynamic_cast<Sprite*>(comp));
+            auto sprite = dynamic_cast<Sprite*>(comp);
+            auto xloc = (sprite->getWorldLocation().x - camera->getWorldLocation().x) * PIXEL_TO_METER_RATIO * camera->getZoom();
+            auto yloc = (sprite->getWorldLocation().y - camera->getWorldLocation().y) * PIXEL_TO_METER_RATIO * camera->getZoom();
+            float zoomx = sprite->getWorldScale().x * camera->getZoom();
+            float zoomy = sprite->getWorldScale().y * camera->getZoom();
+
+            m_window->render(sprite, xloc, yloc, zoomx, zoomy);
         }
     }    
 }
@@ -39,7 +49,8 @@ void RenderSystem::onRender(ComponentParent *renderList)
  * 
  * @param window The window parameter to save
  */
-RenderSystem::RenderSystem(Window *window)
+RenderSystem::RenderSystem(Window *window, GameContext *gcontext)
 {
     m_window = window;
+    m_gameContext = gcontext;
 }
