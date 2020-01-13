@@ -4,8 +4,8 @@ learning project and that is obviously where it got its name from.
 The engine does not house a lot of features right now and a lot of stuff will
 change in the future.
 
-You are welcome to help contribute to this project and help build this engine
-grow. 
+You are welcome to help contribute to this project and help this engine grow
+
 
 ## Creating a game with BoredEngine
 First you will need a project file structure so to create this run the 
@@ -35,7 +35,7 @@ just become a mess.
 
 ### What is going to be added
 Well a lot... but in the near future 
-- Multiple layer background system to create depth of feel when the player moves
+- Multiple layer background system to create depth off feel when the player moves
 - Redo of the event system and making the event configurable 
   like for example the Unreal Engine event system
 - Collision detection
